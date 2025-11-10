@@ -66,8 +66,21 @@ function playRound(player, computer){
     
 }
 
-playRound(getHumanChoice(), getComputerChoice());
-console.log("Player Score: " + playerScore.toString());
-console.log("Computer Score: " + computerScore.toString());
-//playRound(getHumanChoice(), getComputerChoice());
-//playRound(getHumanChoice(), getComputerChoice());
+function playGame(n){
+    for(let i=0;i<n;i++){
+        console.log("--------------");
+        playRound(getHumanChoice(), getComputerChoice());
+        console.log("Player Score: " + playerScore.toString());
+        console.log("Computer Score: " + computerScore.toString());
+        console.log("--------------");
+    }
+    if(playerScore > computerScore){
+        console.log("YOU WIN!!!");
+    }else if(computerScore > playerScore){
+        console.log("YOU LOST :(");
+    }else{
+        console.log("IT'S A DRAW!!!");
+    }
+}
+
+playGame(5);
