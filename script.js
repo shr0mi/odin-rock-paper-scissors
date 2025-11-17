@@ -15,8 +15,7 @@ function getComputerChoice(){
     return choice;
 }
 
-function getHumanChoice(){
-    let choice = Number(prompt("Enter a number between 0-2", 0));
+function getHumanChoice(choice){
     if(choice==0){
         return "Rock";
     }else if(choice == 1){
@@ -31,56 +30,115 @@ function playRound(player, computer){
     if(player == "Rock"){
         if(computer == "Scissors"){
             playerScore++;
-            console.log("Player Wins!");
-            return;
+            //console.log("Player Wins!");
+            return 1;
         }else if(computer == "Paper"){
             computerScore++;
-            console.log("Computer Wins!");
-            return;
+            //console.log("Computer Wins!");
+            return -1;
         }
     }else if(player == "Paper"){
         if(computer == "Rock"){
             playerScore++;
-            console.log("Player Wins!");
-            return;
+            //console.log("Player Wins!");
+            return 1;
         }else if(computer == "Scissors"){
             computerScore++;
-            console.log("Computer Wins!");
-            return;
+            //console.log("Computer Wins!");
+            return -1;
         }
     }else if(player == "Scissors"){
         if(computer == "Paper"){
             playerScore++;
-            console.log("Player Wins!");
-            return;
+            //console.log("Player Wins!");
+            return 1;
         }else if(computer == "Rock"){
             computerScore++;
-            console.log("Computer Wins!");
-            return;
+            //console.log("Computer Wins!");
+            return -1;
         }
         
     }
         
     //Draw
     console.log("Draw!!!");
+    return 0;
     
 }
 
-function playGame(n){
-    for(let i=0;i<n;i++){
-        console.log("--------------");
-        playRound(getHumanChoice(), getComputerChoice());
-        console.log("Player Score: " + playerScore.toString());
-        console.log("Computer Score: " + computerScore.toString());
-        console.log("--------------");
-    }
-    if(playerScore > computerScore){
-        console.log("YOU WIN!!!");
-    }else if(computerScore > playerScore){
-        console.log("YOU LOST :(");
-    }else{
-        console.log("IT'S A DRAW!!!");
-    }
+const rockBtn = document.querySelector("#rockBtn");
+const paperBtn = document.querySelector("#paperBtn");
+const scissorsBtn = document.querySelector("#scissorsBtn");
+
+const scoreBoard = document.querySelector("#scoreBoard");
+
+// Create a button to restart the game
+const restartBtn = document.createElement("button");
+restartBtn.textContent = "Play Again"
+// Get a reference to board in which we will attach restartBtn
+const board = document.querySelector("#board");
+
+let game = 0;
+
+rockBtn.onclick = () => {
+    playGame(getHumanChoice(0));
+}
+paperBtn.onclick = () => {
+    playGame(getHumanChoice(1));
+}
+scissorsBtn.onclick = () => {
+    playGame(getHumanChoice(2));
 }
 
-playGame(5);
+// Restart the game with restart button
+restartBtn.onclick = () => {
+    scoreBoard.textContent = "";
+    playerScore = 0;
+    computerScore = 0;
+
+    rockBtn.disabled = false;
+    paperBtn.disabled = false;
+    scissorsBtn.disabled = false;
+
+    board.removeChild(restartBtn);
+}
+
+function playGame(playerChoice){
+    game++;
+    // Play the game and store the result
+    let result = playRound(playerChoice, getComputerChoice()); 
+    if(result == 1){
+        scoreBoard.textContent += "✅";
+    }else if(result == -1){
+        scoreBoard.textContent += "❌";
+    }else{
+        scoreBoard.textContent += "🟰";
+    }
+    //console.log("Player Score = " + playerScore);
+    //console.log("Computer Score = " + computerScore);
+
+    if(game == 5){
+        game = 0;
+        scoreBoard.textContent = "";
+
+        if(playerScore > computerScore){
+            scoreBoard.textContent = "YOU WIN!!!";
+        }else if(computerScore > playerScore){
+            scoreBoard.textContent = "YOU LOST :(";
+        }else{
+            scoreBoard.textContent = "IT'S A DRAW!!!";
+        }
+
+        // Disable the buttons so that user can not restart it immediately
+        rockBtn.disabled = true;
+        paperBtn.disabled = true;
+        scissorsBtn.disabled = true;
+
+        // Show the restart btn
+        board.appendChild(restartBtn);
+    }
+
+    
+}
+
+
