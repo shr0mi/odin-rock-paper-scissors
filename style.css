@@ -1,0 +1,82 @@
+body {
+    font-family: "Roboto Mono", monospace;
+    background-color: #03045e;
+}
+
+.header {
+    background-color: #0077b6;
+    color: #caf0f8;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.game {
+    background-color: #0077b6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.versus {
+    display: flex;
+    gap: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.versus .player {
+    background-color: #90e0ef;
+    color: #03045e;
+    margin: 20px;
+    padding: 10px 20px 10px 20px;
+    width: 70px;
+}
+
+.versus .player .emoji {
+    font-size: 1.5em;
+    background-color: #03045e;
+    padding: 20px 0px 20px 0px;
+}
+
+button {
+    background-color: #03045e;
+    color: #caf0f8;
+    text-decoration: none;
+    border: none;
+    font-size: 1.3em;
+    padding: 10px;
+}
+
+button:hover {
+    background-color: #caf0f8;
+    color: #03045e;
+    cursor: pointer;
+}
+
+#board {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#board p {
+    font-size: 1.5em;
+}
+
+.footer {
+    margin-top: 20px;
+    background-color: #0077b6;
+    color: #caf0f8;
+    text-align: center;
+    padding: 5px;
+}
+
+.footer a{
+    text-decoration: underline;
+    color: #caf0f8;
+
+}

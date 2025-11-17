@@ -4,24 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
-    
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div>
-        <div class="player">
-            <p id="playerMove">❓</p>
-            <p>Player</p>
+    <div class="header">
+        <h2>Rock-Paper-Scissors</h2>
+    </div>
+    <div class="game">
+        <div class="versus">
+            <div class="player">
+                <p class="emoji" id="playerMove">❓</p>
+                <p>Player</p>
+            </div>
+            <div><p>VS</p></div>
+            <div class="player">
+                <p class="emoji" id="computerMove">❓</p>
+                <p>Computer</p>
+            </div>
         </div>
-        <div class="computer">
-            <p id="computerMove">❓</p>
-            <p>Computer</p>
+        <div class="buttons">
+            <button id="rockBtn">Rock</button>
+            <button id="paperBtn">Paper</button>
+            <button id="scissorsBtn">Scissors</button>
+        </div>
+        <div id="board">
+        <p id="scoreBoard">Score Board</p>
         </div>
     </div>
-    <button id="rockBtn">Rock</button>
-    <button id="paperBtn">Paper</button>
-    <button id="scissorsBtn">Scissors</button>
-    <div id="board">
-    <p id="scoreBoard"></p>
+
+    <div class="footer">
+        <p>Created by <a href="https://github.com/shr0mi">Shr0mi</a></p>
     </div>
     <script defer src="script.js"></script>
 </body>

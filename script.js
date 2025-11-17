@@ -121,7 +121,7 @@ scissorsBtn.onclick = () => {
 
 // Restart the game with restart button
 restartBtn.onclick = () => {
-    scoreBoard.textContent = "";
+    scoreBoard.textContent = "Score Board";
     playerMoveEmoji.textContent = "❓";
     computerMoveEmoji.textContent = "❓";
     playerScore = 0;
@@ -135,6 +135,9 @@ restartBtn.onclick = () => {
 }
 
 function playGame(playerChoice){
+    if(game==0){
+        scoreBoard.textContent = "";
+    }
     game++;
     // Play the game and store the result
     let result = playRound(playerChoice, getComputerChoice()); 
