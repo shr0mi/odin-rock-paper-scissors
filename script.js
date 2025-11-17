@@ -25,8 +25,37 @@ function getHumanChoice(choice){
     }
 }
 
+// Change Move emoji according to move
+const playerMoveEmoji = document.querySelector("#playerMove");
+const computerMoveEmoji = document.querySelector("#computerMove");
+
+function changePlayerMoveEmoji(playerMove){
+    if(playerMove == "Rock"){
+        playerMoveEmoji.textContent = "👊";
+    }else if(playerMove == "Paper"){
+        playerMoveEmoji.textContent = "🖐️";
+    }else{
+        playerMoveEmoji.textContent = "✌️";
+    }
+}
+
+function changeComputerMoveEmoji(computerMove){
+    if(computerMove == "Rock"){
+        computerMoveEmoji.textContent = "👊";
+    }else if(computerMove == "Paper"){
+        computerMoveEmoji.textContent = "🖐️";
+    }else{
+        computerMoveEmoji.textContent = "✌️";
+    }
+}
+
 function playRound(player, computer){
     console.log(player + " vs " + computer + ": ");
+    // Change UI emojis
+    changePlayerMoveEmoji(player);
+    changeComputerMoveEmoji(computer);
+
+
     if(player == "Rock"){
         if(computer == "Scissors"){
             playerScore++;
@@ -93,6 +122,8 @@ scissorsBtn.onclick = () => {
 // Restart the game with restart button
 restartBtn.onclick = () => {
     scoreBoard.textContent = "";
+    playerMoveEmoji.textContent = "❓";
+    computerMoveEmoji.textContent = "❓";
     playerScore = 0;
     computerScore = 0;
 
